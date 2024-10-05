@@ -124,4 +124,38 @@ The Linux file system is organized hierarchically, with the root directory being
 13) `/sys` - Provides a view into the system's hardware devices and drivers in the form of virtual files.
 14) `/tmp` - Contains temporary files created by the system and its users.
 15) `/usr` - Contains non-essential binaries, libraries, and documentation for the system.
-16) `/var` - Contains variable files, such as log files, spool files, and other files that change frequently during system operation. 
+16) `/var` - Contains variable files, such as log files, spool files, and other files that change frequently during system operation.
+
+
+## Network Stack
+It is the actual implementation of networking. The TCP/IP model uses the TCP/IP protocol suite, which we just commonly refer to as TCP/IP. These protocols work together to specify how data should be gathered, addressed, transmitted and routed through a network.
+
+![image](https://github.com/user-attachments/assets/b351ce0d-7a0a-47f2-944a-d6175904a462)
+
+### 1.Application Layer
+
+* The top layer of the TCP/IP model. It determines how your computer's programs (such as your web browser) interface with the transport layer services to view the data that gets sent or received.
+* This layer uses:
+  * HTTP (Hypertext Transfer Protocol) - used for the webpages on the Internet.
+  * SMTP (Simple Mail Transfer Protocol) - electronic mail (email) transmission
+
+### 2.Transport Layer
+
+* How data will be transmitted, includes checking the correct ports, the integrity of the data, and basically delivering our packets.
+* The transports layer helps us transfer our data in a way networks can read it. It breaks our data into chunks that will be transported and put back together in the correct order. These chunks are known as segments. Segments make it easier to transport data across networks. 
+* This layer uses:
+    * TCP (Transmission Control Protocol) - reliable data delivery
+    * UDP (User Datagram Protocol) - unreliable data delivery
+
+### 3. Network Layer
+* This layers specifies how to move packets between hosts and across networks.
+* The Network layer determines the routing of our packets from our source host to a destination host.
+* In the network layer, it receives the segment coming from the transport layer and encapsulates this segment in an IP packet then attaches the IP address of the source host and the IP address of the destination host to the packet header. So at this point, our packet has information about where it is going and where it came from. 
+* This layer uses:
+    * IP (Internet Protocol) - Helps route packets from one machine to another.
+    * ICMP (Internet Control Message Protocol) - Helps tell us what is going on, such as error messages and debugging information.
+
+### 4.Link Layer
+
+* This layer specifies how to send data across a physical piece of hardware. Such as data travelling through Ethernet, fiber, etc.
+* In the link layer, our packet is encapsulated once more into something called a frame. The frame header attaches the source and destination MAC addresses of our hosts, checksums and packet separators so that the receiver can tell when a packet ends. 

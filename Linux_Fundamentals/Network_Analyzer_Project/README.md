@@ -28,4 +28,12 @@ sudo wireshark
 
 ## Run bash Script on .pacp file
 
+```sh
+chmod +x network_analyzer.sh
+```
+
+```sh
+./netwoek_analyzer  network_capture.pacp
+```
+
 ![Screenshot from 2024-10-10 15-01-12](https://github.com/user-attachments/assets/ad9f4df7-e685-4c3b-a809-e0e8d8c30742)

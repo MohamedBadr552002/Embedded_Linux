@@ -25,7 +25,14 @@ OS Can be defined as kernel addition to some applications
 
 ![Architecture Layer Diagram drawio](https://github.com/user-attachments/assets/826e0cf0-1661-4c80-9ee2-138809e48e6a)
 
-
+## C standard library
+* The C standard library is an essential component of a Linux system.
+  * Interface between the applications and the kernel
+  * Provides the well-known standard C API to ease application development
+* Several C standard libraries are available: glibc, uClibc, musl, klibc, newlib..
+* `NOTE:` The choice of the C standard library must be made at cross-compiling toolchain generation time, as the GCC compiler is compiled against a specific C standard library.
+* Always choose `glibc` but if you have size constraints, try to compile your app and then the entire filesystem with uClibc or musl The size advantage of uClibc or musl, which used to be a significant argument, is less relevant with today’s storage capacities.
+  
 ### glib Library
 Glibc is the cornerstone of the C standard library for Linux and Unix-like systems, providing the necessary system call wrappers, utility functions, and runtime support that enable programs to interact with the OS and perform essential tasks like I/O, memory management, and threading. It is fundamental to the operation of nearly all software on Linux systems.
 

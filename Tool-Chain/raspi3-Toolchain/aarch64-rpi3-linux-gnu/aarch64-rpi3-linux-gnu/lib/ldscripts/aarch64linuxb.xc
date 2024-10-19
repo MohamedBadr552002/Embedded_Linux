@@ -1,5 +1,5 @@
 /* Script for -z combreloc */
-/* Copyright (C) 2014-2024 Free Software Foundation, Inc.
+/* Copyright (C) 2014-2023 Free Software Foundation, Inc.
    Copying and distribution of this script, with or without modification,
    are permitted in any medium without royalty provided the copyright
    notice and this notice are preserved.  */
@@ -43,7 +43,6 @@ SECTIONS
       *(.rela.iplt)
       PROVIDE_HIDDEN (__rela_iplt_end = .);
     }
-  .relr.dyn : { *(.relr.dyn) }
   .init           :
   {
     KEEP (*(SORT_NONE(.init)))
@@ -155,7 +154,7 @@ SECTIONS
   }
   .data1          : { *(.data1) }
   _edata = .; PROVIDE (edata = .);
-  . = ALIGN(ALIGNOF(NEXT_SECTION));
+  . = .;
   __bss_start = .;
   __bss_start__ = .;
   .bss            :
@@ -184,7 +183,7 @@ SECTIONS
   .stab.exclstr  0 : { *(.stab.exclstr) }
   .stab.index    0 : { *(.stab.index) }
   .stab.indexstr 0 : { *(.stab.indexstr) }
-  .comment 0 (INFO) : { *(.comment); LINKER_VERSION; }
+  .comment       0 : { *(.comment) }
   .gnu.build.attributes : { *(.gnu.build.attributes .gnu.build.attributes.*) }
   /* DWARF debug sections.
      Symbols in the DWARF debugging sections are relative to the beginning

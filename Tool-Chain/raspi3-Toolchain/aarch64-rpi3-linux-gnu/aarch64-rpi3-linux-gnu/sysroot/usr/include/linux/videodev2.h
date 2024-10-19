@@ -1668,7 +1668,7 @@ struct v4l2_input {
 	__u8	     name[32];		/*  Label */
 	__u32	     type;		/*  Type of input */
 	__u32	     audioset;		/*  Associated audios (bitfield) */
-	__u32        tuner;             /*  Tuner index */
+	__u32        tuner;             /*  enum v4l2_tuner_type */
 	v4l2_std_id  std;
 	__u32	     status;
 	__u32	     capabilities;
@@ -1755,8 +1755,8 @@ struct v4l2_ext_control {
 		__u8 *p_u8;
 		__u16 *p_u16;
 		__u32 *p_u32;
-		__s32 *p_s32;
-		__s64 *p_s64;
+		__u32 *p_s32;
+		__u32 *p_s64;
 		struct v4l2_area *p_area;
 		struct v4l2_ctrl_h264_sps *p_h264_sps;
 		struct v4l2_ctrl_h264_pps *p_h264_pps;

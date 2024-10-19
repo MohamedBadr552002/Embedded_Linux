@@ -1,5 +1,5 @@
 /* Script for -pie -z combreloc -z separate-code -z relro -z now */
-/* Copyright (C) 2014-2024 Free Software Foundation, Inc.
+/* Copyright (C) 2014-2023 Free Software Foundation, Inc.
    Copying and distribution of this script, with or without modification,
    are permitted in any medium without royalty provided the copyright
    notice and this notice are preserved.  */
@@ -66,7 +66,6 @@ SECTIONS
   }
   .plt            : { *(.plt) }
   .iplt           : { *(.iplt) }
-  .gnu.sgstubs    : { *(.gnu.sgstubs*) }
   .text           :
   {
     *(.text.unlikely .text.*_unlikely .text.unlikely.*)
@@ -185,14 +184,15 @@ SECTIONS
   _edata = .; PROVIDE (edata = .);
   /* This section contains data that is initialized during load,
      but not during the application's initialization sequence.  */
-  .persistent   : ALIGN(32 / 8)
+  .persistent :
   {
+    . = ALIGN(32 / 8);
     PROVIDE (__persistent_start = .);
     *(.persistent .persistent.* .gnu.linkonce.p.*)
     . = ALIGN(32 / 8);
     PROVIDE (__persistent_end = .);
   }
-  . = ALIGN(ALIGNOF(NEXT_SECTION));
+  . = .;
   __bss_start = .;
   __bss_start__ = .;
   .bss            :
@@ -210,8 +210,9 @@ SECTIONS
   _bss_end__ = .; __bss_end__ = .;
   /* This section contains data that is not initialized during load,
      or during the application's initialization sequence.  */
-  .noinit   (NOLOAD) : ALIGN(32 / 8)
+  .noinit (NOLOAD) :
   {
+    . = ALIGN(32 / 8);
     PROVIDE (__noinit_start = .);
     *(.noinit .noinit.* .gnu.linkonce.n.*)
     . = ALIGN(32 / 8);
@@ -234,7 +235,7 @@ SECTIONS
   .stab.exclstr  0 : { *(.stab.exclstr) }
   .stab.index    0 : { *(.stab.index) }
   .stab.indexstr 0 : { *(.stab.indexstr) }
-  .comment 0 (INFO) : { *(.comment); LINKER_VERSION; }
+  .comment       0 : { *(.comment) }
   .gnu.build.attributes : { *(.gnu.build.attributes .gnu.build.attributes.*) }
   /* DWARF debug sections.
      Symbols in the DWARF debugging sections are relative to the beginning

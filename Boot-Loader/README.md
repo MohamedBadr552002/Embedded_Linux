@@ -7,6 +7,8 @@
 * Besides these basic functions, most bootloaders provide a shell or menu
   * Menu to select the operating system to load
   * Shell with commands to load data from storage or network, inspect memory, perform hardware testing/diagnostics
+    
+![image](https://github.com/user-attachments/assets/2d288b07-49ca-4d27-a1bb-aa14c6f46f0f)
 
 ## Booting on x86 Platforms
 
@@ -36,8 +38,9 @@
 ![image](https://github.com/user-attachments/assets/fe4a41c5-98f7-407d-b722-c6ff32b73554)
 
 ### U-boot Bootloader
-![image](https://github.com/user-attachments/assets/2d288b07-49ca-4d27-a1bb-aa14c6f46f0f)
 
 * Loaded by BIOS or UEFI to run from RAM to load the kernel
 * To meet the need of a two-stage boot process, U-Boot has the concept of `U-Boot SPL`, The SPL is a stripped-down version of U-Boot, made small enough to meet the size constraints of a first stage bootloader
+  
+![napkin-selection](https://github.com/user-attachments/assets/dc5027f2-2092-4564-b238-891e5aecb8ae)
 

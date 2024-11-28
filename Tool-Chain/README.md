@@ -48,6 +48,10 @@ It's a set of tools that compiles source code into executable that can run on ta
 
 
 ### Instaling crosstool-NG
+Make Sure from your dependencies in your machine 
+```sh
+sudo apt-get install autoconf automake bison bzip2 cmake flex g++ gawk gcc gettext git gperf help2man libncurses5-dev libstdc++6 libtool libtool-bin make patch python3-dev rsync texinfo unzip wget xz-utils
+```
 ```sh
 git clone https://github.com/crosstool-ng/crosstool-ng.git
 ```
@@ -59,8 +63,8 @@ git checkout crosstool-ng-1.26.0
 ./bootstrap
 ```
 ```sh
-./configure
-make
+./configure --prefix=${PWD}
+sudo make
 sudo make install
 ```
 

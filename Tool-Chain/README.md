@@ -102,6 +102,7 @@ Then Build with identification number of Cors
 ```sh
 ./ct-ng build.3
 ```
+**Note: if you have any problem in permissions use sudo command or change the permission of tool directory**
 
 
 

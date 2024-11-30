@@ -45,9 +45,27 @@
 ![napkin-selection](https://github.com/user-attachments/assets/dc5027f2-2092-4564-b238-891e5aecb8ae)
 
 
+
+## Generate Bootloader for raspi3 using U-Boot
+
+install dependencies 
+
 ```sh
 sudo apt update
 sudo apt install libssl-dev
 sudo apt install libgnutls28-dev
+sudo apt-get install qemu-system
+sudo apt-get install device-tree-compiler
+```
 
+Downloading U-Boot:
+```sh
+git clone git://git.denx.de/u-boot.git
+cd u-boot
+```
+
+Building the U-boot
+```sh
+make rpi_3_defconfig
+make CROSS_COMPILE=aarch64-rpi3-linux-gnu-
 ```

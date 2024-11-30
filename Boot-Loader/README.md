@@ -44,3 +44,10 @@
   
 ![napkin-selection](https://github.com/user-attachments/assets/dc5027f2-2092-4564-b238-891e5aecb8ae)
 
+
+```sh
+sudo apt update
+sudo apt install libssl-dev
+sudo apt install libgnutls28-dev
+
+```

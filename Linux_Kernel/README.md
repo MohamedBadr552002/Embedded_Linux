@@ -62,3 +62,7 @@ change `\_install` to location of target root file system
 make ARCH=arm64 CROSS_COMPILE=aarch64-rpi3-linux-gnu- install
 ```
 
+**5-Using the Dynamic Libraries of the Cross-toolchain**
+```sh
+rsync -avh /path/source_in_croos-tool-chain /path/to/destination(to Target root file system)
+```

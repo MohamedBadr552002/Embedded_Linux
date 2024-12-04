@@ -29,3 +29,36 @@ Build the Kernel
 ```sh
 make ARCH=arm64 CROSS_COMPILE=< your cross compiler (aarch64-linux-gnu-)> Image modules dtbs
 ```
+
+if you simulate Right now the kernel will panic Due to there's no existing for Root file System
+```sh
+qemu-system-aarch64 -M virt -cpu cortex-a53 -m 1G -kernel Image -append "console=ttyAMA0" -nographic
+```
+![Screenshot from 2024-12-04 15-52-10](https://github.com/user-attachments/assets/8962bba3-5493-4059-9abd-c7fb2a72fc1c)
+
+### Build and Config Root file System
+
+**1-Make Target root file system manually**
+![Screenshot from 2024-12-04 16-01-11](https://github.com/user-attachments/assets/27f9cfb5-6e99-4ea4-b8bc-8c0c1ba87924)
+
+
+**2-Clone busybox tool** 
+```sh
+git clone git://busybox.net/busybox.git
+cd busybox
+```
+
+**3-Build busybox**
+```sh
+make ARCH=arm64 CROSS_COMPILE=aarch64-rpi3-linux-gnu- menuconfig
+make ARCH=arm64 CROSS_COMPILE=aarch64-rpi3-linux-gnu-
+```
+**4-Install BusyBox to Minimal Root File System**
+
+change `\_install` to location of target root file system
+![Screenshot from 2024-12-04 16-25-05](https://github.com/user-attachments/assets/dfecd5b7-bb19-490c-8ad9-5c9e3b9c40ce)
+
+```sh
+make ARCH=arm64 CROSS_COMPILE=aarch64-rpi3-linux-gnu- install
+```
+
